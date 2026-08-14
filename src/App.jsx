@@ -92,7 +92,7 @@ const translations = {
     waldDesc:
       "מלון יוקרה בשערי הפארק הלאומי המציע גישה ישירה ליער, בריכה חיצונית מחוממת ומרחצאות מעיינות חמים מפנקים.",
     kiramalaDesc:
-      "אחוזה אקסקלוסיבית בכפר ראצ'יסובני. תיהנו ממרתף יין קווברי אותנטי, בקתות פרטיות על שפת האגם ואמבטיות תחת כיפת השמיים.",
+      "אחוזה אקסקלוסיבית בכפר ראצ'יסובני. תיהנו ממרתף ייין קווברי אותנטי, בקתות פרטיות על שפת האגם ואמבטיות תחת כיפת השמיים.",
     shalomDesc:
       "מסעדה כשרה ומסורתית בלבו של טביליסי. מציעה מגוון מאכלים מהמטבח הגיאורגי והיהודי בהשגחה כשרה וקפדנית.",
     jerusalemDesc:
@@ -101,7 +101,7 @@ const translations = {
     wineBadge: "מורשת הגפן • ვაზი",
     wineTitle: "מסורת היין של קאחתי",
     wineDesc:
-      "לב עולם היין הגיאורგი, שבו מסורות הייצור בקווברי נמשכות מעל 8,000 שנה.",
+      "לב עולם היין הגיאורגי, שבו מסורות הייצור בקווברי נמשכות מעל 8,000 שנה.",
   },
 };
 
@@ -277,60 +277,6 @@ const Hero = ({ t }) => {
   );
 };
 
-const WineFeature = ({ t, openLightbox }) => {
-  const images = [
-    {
-      url: "https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?q=80&w=800&auto=format&fit=crop",
-      title: "კახეთის ვენახები",
-    },
-    {
-      url: "https://images.unsplash.com/photo-1506377247377-2a5b3b417ebb?q=80&w=800&auto=format&fit=crop",
-      title: "ვაზი",
-    },
-    {
-      url: "https://images.unsplash.com/photo-1560493676-04071c5f467b?q=80&w=800&auto=format&fit=crop",
-      title: "რთველი",
-    },
-  ];
-
-  return (
-    <section className="py-20 bg-stone-900 border-y border-stone-800 text-stone-100">
-      <div className="max-w-6xl mx-auto px-6 text-center">
-        <span className="text-amber-300/80 text-xs tracking-[0.3em] uppercase block mb-2 font-serif">
-          {t.wineBadge}
-        </span>
-        <h3 className="text-2xl md:text-4xl font-serif text-white mb-4">
-          {t.wineTitle}
-        </h3>
-        <p className="text-stone-400 font-light max-w-xl mx-auto text-sm md:text-base leading-relaxed mb-12">
-          {t.wineDesc}
-        </p>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {images.map((img, idx) => (
-            <div
-              key={idx}
-              className="group relative h-64 overflow-hidden rounded-sm cursor-pointer border border-amber-900/20"
-              onClick={() => openLightbox(img.url)}
-            >
-              <img
-                src={img.url}
-                alt={img.title}
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-90 group-hover:opacity-100"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-stone-950/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
-                <span className="text-xs tracking-wider text-amber-200 font-serif">
-                  {img.title}
-                </span>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-};
-
 // Generic Listing Card (PERFECTLY ALIGNED GRID FIX)
 const ListingCard = ({
   name,
@@ -477,7 +423,7 @@ export default function App() {
                 "Домики у озера",
                 "Купели на природе",
               ]
-            : ["ראצ'იסובני", "מרתף קוובრი", "בקתות אגם", "טבילה בטבע"],
+            : ["ראצ'יסובני", "מרתף קווברי", "בקתות אגם", "טבילה בטבע"],
       images: [Kiramala1, Kiramala2, Kiramala3],
     },
   ];
@@ -502,8 +448,7 @@ export default function App() {
                 "Шаббатние обеды",
               ]
             : ["טביליסי", "גלאט כשר", "מטבח גיאורגי-יהודי", "ארוחות שבת"],
-      images: [Aleichem1, Aleichem2, Aleichem3
-      ],
+      images: [Aleichem1, Aleichem2, Aleichem3],
     },
     {
       name: "Jerusalem Kosher Restaurant",
@@ -518,9 +463,8 @@ export default function App() {
             ]
           : lang === "ru"
             ? ["Тбилиси", "Кошерный сертификат", "Центр города", "Винный бар"]
-            : ["טביליסי", "תעოדת כשרות", "במרכז העיר", "בר יין כשר"],
-      images: [placeholder, placeholder, placeholder
-      ],
+            : ["טביליסי", "תעודת כשרות", "במרכז העיר", "בר יין כשר"],
+      images: [placeholder, placeholder, placeholder],
     },
   ];
 
@@ -531,8 +475,6 @@ export default function App() {
     >
       <Header lang={lang} setLang={setLang} />
       <Hero t={t} />
-
-      <WineFeature t={t} openLightbox={setLightboxImage} />
 
       {/* Resorts Section */}
       <main className="max-w-6xl mx-auto px-6 py-20">
